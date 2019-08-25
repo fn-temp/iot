@@ -28,19 +28,19 @@ void loop() {
   delay(500);
   
 
-  int rate = map(t,0,100,0,255);
+//  int rate = map(t,0,100,0,255);
 
   if (check > t) {
-    red -= rate;
-    blue += rate ;
+    red -=35;
+    blue +=35 ;
          Serial.println("------check > t---");
 
     }  
 
 
   if (t > check) {
-    red += rate;
-    blue -= rate ;
+    red +=35;
+    blue -= 35;
              Serial.println("------t > check---");
 
   }
@@ -62,10 +62,10 @@ void loop() {
   }
   leds.setColorRGB(0,red,0,blue); 
   check = t ;
-//   Serial.println(red);
-//    Serial.println(blue);
-//    Serial.println("----*******--");
-    
+   Serial.println(red);
+    Serial.println(blue);
+    Serial.println("----*******--");
+    delay(500);
       
 
 }
