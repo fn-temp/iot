@@ -31,7 +31,7 @@ void loop() {
   delay(100); 
   if (start == true && x<50 && count%2==0 ){
     
-    analogWrite(buzzer,3);
+    analogWrite(buzzer,10);
     digitalWrite(r,HIGH);
     delay(100);
     analogWrite(buzzer,0);
@@ -39,5 +39,7 @@ void loop() {
     delay(100);
     count++;
     
-  }
+ }
+ 
+Serial.println(start);
 }
