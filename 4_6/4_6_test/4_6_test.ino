@@ -7,6 +7,7 @@ Ultrasonic ultrasonic(6);
 int start = 0;
 int dis = 0 ;
 int times = -1 ;
+int checkPoint = 0 ;
 void setup() {
   Serial.begin(9600);
   pinMode(r,OUTPUT);
@@ -22,32 +23,39 @@ void loop() {
   }
 
  if (times %2 == 0) {
-        start = 1 ;    
-        if (start == 1) {
-          Serial.println(start);
+  
           ultrasonic.MeasureInCentimeters();
           dis = ultrasonic.RangeInCentimeters;
           Serial.println(dis);
           delay(100); 
             if (dis < 50) {
-              analogWrite(buzzer,2);
+              analogWrite(buzzer,1);
               digitalWrite(r,HIGH);
               delay(100);
               analogWrite(buzzer,0);
               digitalWrite(r,LOW);
               delay(100);
-            }   
-      }
+              checkPoint++ ;
+            }
+  }
+
+  if (checkPoint != 0) {
+    analogWrite(buzzer,1);
+              digitalWrite(r,HIGH);
+              delay(100);
+              analogWrite(buzzer,0);
+              digitalWrite(r,LOW);
+              delay(100);
   }
   
   if (times %2 != 0) {
-        start = 0 ;  
-        if (start == 0) {
+          start = 0 ;
+          checkPoint = 0 ;
           digitalWrite(r,LOW);
           analogWrite(buzzer,0);
-      }
    }
 
+   
   
 Serial.println(start);
 Serial.println("---------");
