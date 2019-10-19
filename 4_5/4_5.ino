@@ -14,9 +14,21 @@ void setup() {
 }
 
 void loop() {
-      
-  if (analogRead(Sensor) >= 300 ) {
-    //digitalWrite(red,HIGH);
+//      Serial.println(analogRead(Sensor) );
+int sum = 0 ;
+sum+=analogRead(Sensor);
+sum+=analogRead(Sensor);
+sum+=analogRead(Sensor);
+sum+=analogRead(Sensor);
+sum+=analogRead(Sensor);
+//Serial.print("sum --------");
+//Serial.println(sum);
+//Serial.print("sum / 5 --------");
+//Serial.println(sum/5);
+
+
+  if (sum/5 >= 450 ) {
+//    digitalWrite(red,HIGH);
     readyTime += 1;
       Serial.println("+++++++++1111111111111111");
 
@@ -42,4 +54,5 @@ void loop() {
 //  Serial.println(sound);
  Serial.print("clap -> ");
     Serial.println(readyTime);
+    delay(5);
 }
